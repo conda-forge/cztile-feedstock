@@ -1,13 +1,13 @@
 {% set name = "cztile" %}
-{% set version = "0.1.2" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cztile-{{ version }}.tar.gz
-  sha256: 3e42c4a93fd7b2df985b42e66dc3c585b3ebd9c1167e9f7e7d5c34c57697b929
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cztile-{{ version }}.tar.gz
+  sha256: 2fff333410c00dca23e40a506f770889c02a0cef86cfc4e31586c6cc95fe7168
 
 build:
   noarch: python
