@@ -1,48 +1,53 @@
 {% set name = "cztile" %}
-{% set version = "0.1.2" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cztile-{{ version }}.tar.gz
-  sha256: 3e42c4a93fd7b2df985b42e66dc3c585b3ebd9c1167e9f7e7d5c34c57697b929
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cztile-{{ version }}.tar.gz
+  sha256: 2fff333410c00dca23e40a506f770889c02a0cef86cfc4e31586c6cc95fe7168
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - pip
-    - python >=3.6,<3.10
+    - python {{ python_min }}
+    - setuptools >=61
+    - wheel
   run:
-    - python >=3.6,<3.10
+    - python >={{ python_min }},<3.14
 
 test:
   imports:
     - cztile
-    - cztile.fixed_total_area_strategy
+    - cztile.fixed_total_area_strategy_2d
     - cztile.tiling_strategy
   commands:
-    - pip list
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/cztile/
   summary: A set of tiling utilities
   description: |
-    This project provides simple-to-use tiling functionality for arrays. 
-    It is not linked directly to the CZI file format, but can be of 
-    use to process such images in an efficient and tile-wise manner, 
+    This project provides simple-to-use tiling functionality for arrays.
+    It is not linked directly to the CZI file format, but can be of
+    use to process such images in an efficient and tile-wise manner,
     which is especially important when dealing with larger images.
   license: Apache-2.0
-  license_file: LICENSE.txt
+  license_file:
+    - LICENSE.txt
+    - NOTICE.txt
 
 extra:
   recipe-maintainers:
     - goanpeca
+    - drstone-genius04
