@@ -194,5 +194,4 @@ Feedstock Maintainers
 =====================
 
 * [@drstone-genius04](https://github.com/drstone-genius04/)
-* [@goanpeca](https://github.com/goanpeca/)
 
